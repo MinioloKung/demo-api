@@ -42,3 +42,18 @@ let users = [
 app.get('/users', (req, res) => {
   res.status(200).json(users);
 });
+
+app.get('/users/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const user = users.find(u => u.id === id);
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+  res.status(200).json(user);
+});
+
+app.post('/users', (req, res) => {
+  const newUser = req.body;
+  users.push(newUser);
+  res.status(201).json(newUser);
+});
