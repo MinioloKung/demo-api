@@ -20,3 +20,25 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
+let users = [
+  {
+    id: 1,
+    fname: "Jinnapad",
+    lname: "Nooman",
+    username: "jinnapad.nooman",
+    email: "karn.yong@melivecode.com",
+    avatar: "https://www.melivecode.com/users/1.png"
+  }, {
+    id: 2,
+    fname: "Parkpoom",
+    lname: "Chasiriprasert",
+    username: "parkpoom",
+    email: "parkpoom@melivecode.com",
+    avatar: "https://www.melivecode.com/users/2.png"
+  }
+];
+
+app.get('/users', (req, res) => {
+  res.status(200).json(users);
+});
