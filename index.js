@@ -57,3 +57,13 @@ app.post('/users', (req, res) => {
   users.push(newUser);
   res.status(201).json(newUser);
 });
+
+app.put('/users/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = users.findIndex(u => u.id === id);
+  if (index === -1) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+  users[index] = { ...users[index], ...req.body};
+  res.status(200).json(users[index]);
+});
