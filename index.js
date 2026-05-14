@@ -67,3 +67,13 @@ app.put('/users/:id', (req, res) => {
   users[index] = { ...users[index], ...req.body};
   res.status(200).json(users[index]);
 });
+
+app.delete('/users/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = users.findIndex(u => u.id === id);
+  if (index === -1) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+  users.splice(index, 1);
+  res.status(200).json({ message: 'User with ID ${id} deleted successfully' });
+});
