@@ -77,3 +77,13 @@ app.delete('/users/:id', (req, res) => {
   users.splice(index, 1);
   res.status(200).json({ message: 'User with ID ${id} deleted successfully' });
 });
+
+let products = [
+  { id: 1, name: "Laptop", price: 999.99 },
+  { id: 2, name: "Smartphone", price: 499.99 },
+  { id: 3, name: "Headphones", price: 199.99 }
+];
+
+app.get('/products', (req, res)  => {
+  res.status(200).json(products);
+});
