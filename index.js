@@ -96,3 +96,9 @@ app.get('/products/:id', (req, res) => {
   }
   res.status(200).json(product);
 });
+
+app.post('/products', (req, res) => {
+  const newProduct = req.body;
+  products.push(newProduct);
+  res.status(201).json(newProduct);
+});
