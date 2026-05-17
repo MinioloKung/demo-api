@@ -87,3 +87,12 @@ let products = [
 app.get('/products', (req, res)  => {
   res.status(200).json(products);
 });
+
+app.get('/products/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const product = products.find(p => p.id === id);
+  if (!product) {
+    return res.status(404).json({ message: 'ไม่พบสินค้า' })
+  }
+  res.status(200).json(product);
+});
